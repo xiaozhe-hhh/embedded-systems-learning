@@ -1,0 +1,38 @@
+# Complete upstream Linux source and archives (fetch locally when needed)
+/linux
+/linux/
+/linux-6.17.7/
+/linux-6.17.7.tar.xz
+/linux-*.tar.xz
+/linux-*.tar.gz
+
+# Build products
+/build/
+*.o
+*.ko
+*.mod
+*.mod.c
+*.cmd
+Module.symvers
+modules.order
+
+# Editor and OS temporary state
+.vscode/*.log
+.idea/
+*.swp
+*.swo
+*~
+.~lock.*#
+.DS_Store
+Thumbs.db
+
+# Secrets and local-only configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+
+# Downloaded checksum catalog used by the source-fetch helper
+/sha256sums.asc

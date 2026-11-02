@@ -1,0 +1,17 @@
+{
+  // The Linux source tree is large; avoid watching every source file recursively.
+  "files.watcherExclude": {
+    "**/linux/**": true,
+    "**/linux-6.17.7/**": true
+  },
+  // Keep source files searchable when explicitly requested; skip generated/build output.
+  "search.exclude": {
+    "**/linux/.git/**": true,
+    "**/linux/**/build/**": true,
+    "**/linux/**/tmp/**": true
+  },
+  "files.exclude": {
+    "**/.git/**": true
+  },
+  "commentTranslate.targetLanguage": "zh-CN"
+}

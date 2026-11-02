@@ -1,0 +1,15 @@
+# 许可证说明
+
+## 作者原创内容
+
+本仓库作者原创的学习笔记、解释文字、图表和自编示例（除另有说明的部分）采用 **Creative Commons Attribution-ShareAlike 4.0 International（CC BY-SA 4.0）** 许可。使用时请注明来源，并以相同许可分享改编内容。许可全文：<https://creativecommons.org/licenses/by-sa/4.0/>。
+
+## 第三方材料
+
+- Linux 内核及其文档由 Linux 内核贡献者提供，通常采用 GPL-2.0-only；具体文件以文件头 SPDX 标识为准。官方源码仓库：<https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/>。
+- `zh-linux/usage-model.rst` 是 Linux 内核 `Documentation/devicetree/usage-model.rst` 的中文翻译衍生作品，保留上游 GPL-2.0 标识。翻译所依据版本与路径见该目录 README。
+- 本仓库笔记中的短源码摘录保留其上游许可和版权归属；请结合相应内核文件头及 Linux 内核许可证理解。摘录不代表 Linux 内核源码由本项目作者创作。
+
+如果某一文件有单独的 SPDX 标识或许可声明，以该文件声明为准。
+
+The repository-level `LICENSE` file contains the CC BY-SA 4.0 legal code for original materials; the scope limitation above remains applicable.
