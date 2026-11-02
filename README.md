@@ -10,6 +10,8 @@
 - [通用基础知识](shared-notes/README.md)
 - [学习与实习计划（2026.11–2027.03）](study-plan/README.md)
 - [每日学习日志](daily-log/README.md)
+- [对话问题记录与整理规则](LEARNING_WORKFLOW.md)
+- [学习问题收件箱](learning-inbox.md)
 - [嵌入式 Linux](embedded-linux/README.md)
 - [MCU + RTOS](mcu-rtos/README.md)
 - [资料索引](resources/README.md)
@@ -40,6 +42,8 @@ Linux 源码采用 GPL-2.0-only，版权及许可属于 Linux 内核项目和各
 ├── shared-notes/     # C、数据结构、计算机组成、OS、工具等基础
 ├── study-plan/       # Linux 驱动主线、项目与实习时间计划
 ├── daily-log/        # 每日总结与复盘日志
+├── learning-inbox.md # 对话中的学习问题及时间记录
+├── LEARNING_WORKFLOW.md # 问答记录、归档与定时发布规则
 ├── resources/        # 资料索引
 ├── zh-linux/         # 内核文档中文参考译稿
 └── scripts/          # 获取指定版本 Linux 源码
