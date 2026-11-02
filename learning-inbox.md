@@ -78,3 +78,88 @@ int binary_search_half_open(const int* nums, int n, int target) {
 
 **归档状态**：待归档，尚未展开讲解
 **建议归档主题**：优先归档到《代码随想录》笔记 `code-thought-record/二分查找.md` 的 LeetCode 704 条目；通用数据结构笔记可链接该专题。
+
+### 2026-11-02 23:44（Asia/Shanghai）— LeetCode 27 移除元素的数组搬移边界
+
+**问题**：在《代码随想录》LeetCode 27 暴力解法中，第二层循环原写法从 `j = i + 1` 开始并执行 `nums[j - 1] = nums[j]`。如果保持外层代码不变，改成从 `j = i` 开始并执行 `nums[j] = nums[j + 1]`，循环条件仍写 `j < size`，是否正确？
+
+**结论**：不正确。原数组逻辑长度为 `size` 时，有效下标是 `0` 到 `size - 1`。当 `j == size - 1` 时，右侧表达式会读取 `nums[size]`，越过 vector 的有效元素范围，属于未定义行为。即使 vector 的 capacity 更大，`nums[size]` 仍不是有效元素下标。
+
+若改成从当前位置向左覆盖，循环上界也必须相应收紧：
+
+```cpp
+for (int j = i; j < size - 1; ++j) {
+    nums[j] = nums[j + 1];
+}
+```
+
+完整上下文示例：
+
+```cpp
+int removeElement(vector<int>& nums, int val) {
+    int size = static_cast<int>(nums.size());
+
+    for (int i = 0; i < size; ++i) {
+        if (nums[i] == val) {
+            for (int j = i; j < size - 1; ++j) {
+                nums[j] = nums[j + 1];
+            }
+            --i;     // 当前 i 位置被右侧元素覆盖，下一轮要重新检查
+            --size;  // 逻辑长度减一；末尾旧值不再属于有效结果
+        }
+    }
+    return size;
+}
+```
+
+这与原写法 `for (j = i + 1; j < size; ++j) nums[j - 1] = nums[j];` 等价：两者都是把后续元素整体左移一位。每次删除后 `i--` 配合外层 `for` 的 `i++`，使同一下标重新检查；`size--` 缩短有效区间。该暴力做法最坏时间复杂度为 `O(n^2)`，额外空间复杂度为 `O(1)`。
+
+**示例**：`nums = [0,1,2,2,3,0,4,2]`、`val = 2`。在 `i = 2` 删除一个 `2` 时，后续有效元素左移，`size` 从 8 减到 7；下标 2 需要重新检查，因为那里又被下一个元素覆盖。
+
+**归档状态**：待归档
+**建议归档主题**：《代码随想录》数组 / LeetCode 27 移除元素，建议归入 `code-thought-record/数组.md`。
+
+### 2026-11-02 23:51（Asia/Shanghai）— LeetCode 27 快慢指针写法
+
+**问题**：在《代码随想录》的双指针版本中，`if (val != nums[fastIndex]) nums[slowIndex++] = nums[fastIndex];` 是不是表示“当前值不等于要删除的值时，把当前下标的后一个元素赋成当前元素”？
+
+**代码**：
+
+```cpp
+int removeElement(vector<int>& nums, int val) {
+    int slowIndex = 0;
+    for (int fastIndex = 0; fastIndex < nums.size(); ++fastIndex) {
+        if (val != nums[fastIndex]) {
+            nums[slowIndex++] = nums[fastIndex];
+        }
+    }
+    return slowIndex;
+}
+```
+
+**解释**：不是“当前下标的后一个元素”。`fastIndex` 是读指针，逐个检查原数组元素；`slowIndex` 是写指针，指向下一个保留元素应该写入的位置。发现 `nums[fastIndex] != val` 时，把当前保留值写到 `nums[slowIndex]`，然后 `slowIndex` 加一。发现要删除的值时跳过它，`slowIndex` 不变。
+
+`nums[slowIndex++] = nums[fastIndex];` 可理解为下面两步：
+
+```cpp
+nums[slowIndex] = nums[fastIndex];
+++slowIndex;
+```
+
+例如 `nums = [0,1,2,2,3,0,4,2]`、`val = 2`：
+
+| `fastIndex` | 读到的值 | 操作 | `slowIndex` 变化 |
+|---:|---:|---|---:|
+| 0 | 0 | 写到 `nums[0]` | 0 → 1 |
+| 1 | 1 | 写到 `nums[1]` | 1 → 2 |
+| 2 | 2 | 跳过 | 保持 2 |
+| 3 | 2 | 跳过 | 保持 2 |
+| 4 | 3 | 写到 `nums[2]` | 2 → 3 |
+| 5 | 0 | 写到 `nums[3]` | 3 → 4 |
+| 6 | 4 | 写到 `nums[4]` | 4 → 5 |
+| 7 | 2 | 跳过 | 保持 5 |
+
+循环结束后返回 `5`；有效结果是前 5 个元素 `[0,1,3,0,4]`。`slowIndex` 表示新长度，数组尾部的旧值不属于结果，不要求清除。该快慢指针解法时间复杂度 `O(n)`、额外空间复杂度 `O(1)`，保持其余元素的相对顺序。
+
+**归档状态**：待归档
+**建议归档主题**：《代码随想录》数组 / LeetCode 27 移除元素，归入 `code-thought-record/数组.md`；与前面暴力搬移写法对照。
