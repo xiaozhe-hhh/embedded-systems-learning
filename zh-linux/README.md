@@ -1,5 +1,0 @@
-# Linux 设备树文档中文参考译稿
-
-`usage-model.rst` 是 Linux 内核文档 `Documentation/devicetree/usage-model.rst` 的中文翻译衍生作品。文件保留上游 GPL-2.0 标识；翻译可能未跟随当前内核更新，应以对应版本的英文上游文档为准。
-
-本工作区学习源码版本为 Linux v6.17.7。上游路径：<https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/usage-model.rst?h=v6.17.7>。

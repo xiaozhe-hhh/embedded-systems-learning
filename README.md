@@ -6,17 +6,17 @@
 
 ## 项目导航
 
-- [学习进度与路线](embedded-linux/README.md)
-- [通用基础知识](shared-notes/README.md)
-- [《代码随想录》算法笔记](code-thought-record/README.md)
-- [学习与实习计划（2026.11–2027.03）](study-plan/README.md)
-- [每日学习日志](daily-log/README.md)
-- [对话问题记录与整理规则](LEARNING_WORKFLOW.md)
-- [学习问题收件箱](learning-inbox.md)
-- [嵌入式 Linux](embedded-linux/README.md)
-- [MCU + RTOS](mcu-rtos/README.md)
-- [资料索引](resources/README.md)
-- [设备树中文参考译稿](zh-linux/usage-model.rst)
+- [学习进度与路线](嵌入式Linux/说明.md)
+- [通用基础知识](通用基础/说明.md)
+- [《代码随想录》算法笔记](代码随想录/说明.md)
+- [学习与实习计划（2026.11–2027.03）](学习计划/说明.md)
+- [每日学习日志](每日记录/说明.md)
+- [对话问题记录与整理规则](学习记录与归档规则.md)
+- [学习问题收件箱](学习问题收件箱.md)
+- [嵌入式 Linux](嵌入式Linux/说明.md)
+- [MCU + RTOS](MCU与RTOS/说明.md)
+- [资料索引](学习资料/说明.md)
+- [设备树中文参考译稿](Linux文档/使用模型.rst)
 
 ## 学习进度
 
@@ -24,13 +24,13 @@
 
 ## Linux 源码
 
-本仓库不提交完整 Linux 源码。Linux v6.17.7 约 1.7 GiB，源码及其压缩包属于第三方项目内容，直接纳入会使本学习仓库过大。可运行 [`scripts/fetch-linux-source.sh`](scripts/fetch-linux-source.sh) 从 kernel.org 下载并校验后解压。笔记默认源码位置为工作区下的 `linux/`。
+本仓库不提交完整 Linux 源码。Linux v6.17.7 约 1.7 GiB，源码及其压缩包属于第三方项目内容，直接纳入会使本学习仓库过大。可运行 [`脚本/获取Linux源码.sh`](脚本/获取Linux源码.sh) 从 kernel.org 下载并校验后解压。笔记默认源码位置为工作区下的 `linux/`。
 
-Linux 源码采用 GPL-2.0-only，版权及许可属于 Linux 内核项目和各贡献者。仓库中的少量源码摘录用于学习并注明版本、路径和符号；原文许可仍适用。详见[许可证说明](LICENSE.md)。
+Linux 源码采用 GPL-2.0-only，版权及许可属于 Linux 内核项目和各贡献者。仓库中的少量源码摘录用于学习并注明版本、路径和符号；原文许可仍适用。详见[许可证说明](许可证说明.md)。
 
 ## 推荐学习方式
 
-先读概念和官方文档，再看小型例子，最后沿着关键函数调用链阅读源码。每篇源码笔记提供建议阅读顺序、符号入口、短代码摘录和自测题；请把自己的复盘写在“我的复盘”区域。详见[源码阅读方法](shared-notes/source-reading-guide.md)。
+先读概念和官方文档，再看小型例子，最后沿着关键函数调用链阅读源码。每篇源码笔记提供建议阅读顺序、符号入口、短代码摘录和自测题；请把自己的复盘写在“我的复盘”区域。详见[源码阅读方法](通用基础/源码阅读指南.md)。
 
 树莓派等资源有限设备可用 Geany、Mousepad 或命令行工具阅读；不需要为阅读笔记编译整个内核。VS Code 设置已排除 Linux 源码的递归文件监视。
 
@@ -38,17 +38,17 @@ Linux 源码采用 GPL-2.0-only，版权及许可属于 Linux 内核项目和各
 
 ```text
 .
-├── embedded-linux/   # Linux 学习路线与源码笔记
-├── mcu-rtos/         # MCU + RTOS 学习路线
-├── shared-notes/     # C、数据结构、计算机组成、OS、工具等基础
-├── code-thought-record/ # 《代码随想录》算法题笔记
-├── study-plan/       # Linux 驱动主线、项目与实习时间计划
-├── daily-log/        # 每日总结与复盘日志
-├── learning-inbox.md # 对话中的学习问题及时间记录
-├── LEARNING_WORKFLOW.md # 问答记录、归档与定时发布规则
-├── resources/        # 资料索引
-├── zh-linux/         # 内核文档中文参考译稿
-└── scripts/          # 获取指定版本 Linux 源码
+├── 嵌入式Linux/   # Linux 学习路线与源码笔记
+├── MCU与RTOS/         # MCU + RTOS 学习路线
+├── 通用基础/     # C、数据结构、计算机组成、OS、工具等基础
+├── 代码随想录/ # 《代码随想录》算法题笔记
+├── 学习计划/       # Linux 驱动主线、项目与实习时间计划
+├── 每日记录/        # 每日总结与复盘日志
+├── 学习问题收件箱.md # 对话中的学习问题及时间记录
+├── 学习记录与归档规则.md # 问答记录、归档与定时发布规则
+├── 学习资料/        # 资料索引
+├── Linux文档/         # 内核文档中文参考译稿
+└── 脚本/          # 获取指定版本 Linux 源码
 ```
 
 ## 许可证与贡献
